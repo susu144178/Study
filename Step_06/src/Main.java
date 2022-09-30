@@ -21,7 +21,7 @@ public class Main {
                 System.out.println(number + "의 값이 잘못되었습니다.");
             }
             else {
-                System.out.println("정상 입력 되었습니다.");
+                //System.out.println("정상 입력 되었습니다.");
             }
 
             // ** if 영역과 else 영역을 서로 다른 분기로 나누어
@@ -35,7 +35,7 @@ public class Main {
             // ** 조건과 성립하지 않는 경우에는 pass
             if(number == 10)
             {
-                System.out.println("당첨");
+                //System.out.println("당첨");
             }
 
             // ** 정리 if/else 문은 if 문만 별도로 사용 가능하고,
@@ -82,6 +82,48 @@ public class Main {
             else
             {
 
+            }
+        }
+
+
+
+
+
+        // ** [switch/case]
+        {
+            int num = 0;
+            final int ONE = 1;
+
+            // ** switch = 정수 & 상수만 사용이 가능하다.
+            // ** 변수이지만 final 키워드를 사용하여 상수로 만든 경우에는 사용 가능.
+            switch(num)
+            {
+                case 0:
+                    System.out.println("case 1번입니다.");
+                    break; // 탈출문
+                case ONE:
+                    System.out.println("case 2번입니다.");
+                    break;
+                case 2:
+                    System.out.println("case 3번입니다.");
+                    break;
+                case 3:
+                    System.out.println("case 4번입니다.");
+                    break;
+            }
+
+            num = 3;
+            switch(num)
+            {
+                case 0:
+
+                    break;
+                case 1:
+
+                    break;
+
+                default: // else
+                    System.out.println("0과 1만 사용이 가능합니다." + num + "은 사용이 불가 합니다.");
             }
         }
     }
