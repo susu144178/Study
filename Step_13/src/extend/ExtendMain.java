@@ -19,6 +19,8 @@ public class ExtendMain {
         c.name = "홍길동";
         c.age = 26;
 
-        System.out.println(c.name + " : " + c.age);
+        c.render(10);
+        c.render("임꺽정");
+        //System.out.println(c.name + " : " + c.age);
     }
 }
