@@ -5,13 +5,19 @@ public class Object {
     int index;
 
     int age;
-    String name;
-    String _class;
+
+    abstract class Object {
+        String name;
+        String _class;
 
 
-    public void render()
-    {
+        public void render()
 
-    }
+        Object(String name) {
+
+        }
+        this.name =name;
+    };
+    abstract public void render();
 
 }
