@@ -12,17 +12,13 @@ public class ManagementMain {
         int age = member.getAge();
 
         Group group = new Group();
-        group.set_class("K");
-        group.setSubject("KK");
-        
+        group.set_class("정보");
+        group.setSubject("주제");
 
+        String _class = group.get_class();
+        String subject = group.getSubject();
 
-
-
-
-
-
-
+        System.out.println(subject + " : " + _class);
         System.out.println(name + " : " + age);
     }
 }
