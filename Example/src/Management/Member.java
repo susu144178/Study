@@ -4,8 +4,11 @@ public class Member extends Parent{
 
     int age;
     String userName;
+    Group group; // has - a 관계
 
-    Group group;
+
+    public Group getGroup() { return group; }
+    public void setGroup(Group group) { this.group = group; }
 
     public int getAge(){ return this.age; }
     public void setAge(int age){ this.age = age; }
