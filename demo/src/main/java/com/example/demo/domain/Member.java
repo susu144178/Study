@@ -20,9 +20,18 @@ public class Member {
     @Column(name = "NAME")
     private String userName;
 
-    public Member(String userName)
+    @Column(name = "AGE")
+    private Integer age;
+
+    @Column(name = "EMAIL")
+    private String email;
+
+
+    public Member(String userName, Integer age, String email)
     {
         this.userName = userName;
+        this.age = age;
+        this.email = email;
     }
 
 }

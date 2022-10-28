@@ -16,15 +16,18 @@ public class MemberController {
 
 
     @GetMapping("new")
-    public String newMember() { return "new"; }
+    public String newMember()
+    {
+        return "new";
+    }
 
     //@GetMapping("create")
     @PostMapping("create")
     public String createMember()
     {
-        Member member = new Member("홍길동");
+        Member member = new Member("홍길동", 34, "asdasd@mega.com");
+
         memberRepository.save(member);
-        System.out.println("createMember");
-        return "";
+        return "create";
     }
 }
