@@ -18,13 +18,22 @@ public class Member {
     private Long id;
 
     @Column(name = "NAME")
-    private String userName;
+    private String username;
 
+    public Member(String username)
+    {
+        this.username = username;
+    }
+
+
+    /*
     @Column(name = "AGE")
     private Integer age;
 
     @Column(name = "EMAIL")
     private String email;
+
+
 
 
     public Member(String userName, Integer age, String email)
@@ -34,4 +43,12 @@ public class Member {
         this.email = email;
     }
 
+     */
 }
+
+// ** [영속성]
+
+// ** 영속 : EntityManager 에 포함된 상태
+// ** 비 영속 : EntityManager 에 포함되기 전 상태
+// ** 준 영속 : EntityManager 에 포함 되었었고, 현재는 포함되지 않은 상태
+// ** 삭제 : 삭제된 상태
