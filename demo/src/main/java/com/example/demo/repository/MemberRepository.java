@@ -2,11 +2,13 @@ package com.example.demo.repository;
 
 
 import com.example.demo.domain.Member;
+import com.example.demo.dto.MemberDto;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.List;
 
 @Repository
 public class MemberRepository  {
@@ -20,4 +22,7 @@ public class MemberRepository  {
     }
 
 
+    public List<Member> findAll() {
+        return em.createQuery("select m from Member m", Member.class).getResultList();
+    }
 }
