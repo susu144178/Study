@@ -25,4 +25,18 @@ public class MemberRepository  {
     public List<Member> findAll() {
         return em.createQuery("select m from Member m", Member.class).getResultList();
     }
+
+    public List<Member> findName(String username) {
+        return em.createQuery("select m from Member m where m.username = :name", Member.class)
+                .setParameter("name", username)
+                .getResultList();
+    }
+
+    public void deleteMember(String username) {
+        List<Member> members = findName(username);
+
+        for(int i = 0; i < members.size(); ++i){
+            em.remove(members.get(i));
+        }
+    }
 }

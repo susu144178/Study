@@ -27,4 +27,12 @@ public class MemberService {
         return memberRepository.findAll();
 
     }
+
+    public List<Member> findName(MemberDto dto) {
+        return memberRepository.findName(dto.getUsername());
+    }
+
+    public void deleteMember(String username) {
+        memberRepository.deleteMember(username);
+    }
 }
