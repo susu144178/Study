@@ -1,8 +1,8 @@
 package com.example.demo.controller;
 
 
+import com.example.demo.dto.ProductDto;
 import com.example.demo.service.ProductService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,11 +24,15 @@ public class ProductController {
     }
 
     @PostMapping("addProduct")
-    public String addImage(MultipartFile file) throws Exception
+    public String addImage(MultipartFile file, ProductDto dto) throws Exception
     {
-        productService.save(file);
+        productService.save(file, dto);
         return "redirect:/";
     }
+
+
+
+
 
 
 
