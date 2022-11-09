@@ -25,17 +25,18 @@ public class ProductService {
         String filePath = System.getProperty("user.dir")
                 + "\\src\\main\\resources\\static\\images";
 
-
         UUID uuid = UUID.randomUUID();
         String fileName = uuid + "_" + file.getOriginalFilename();
-
 
         File saved = new File(filePath, fileName);
         file.transferTo(saved);
 
-
-
-        //ImageObject product = new ImageObject(filePath, fileName);
+        ImageObject product = new ImageObject(
+                dto.getTitle(),
+                dto.getContent(),
+                dto.getCount(),
+                dto.getPrice(),
+                fileName, filePath);
 
         //productRepository.save(product);
     }
