@@ -17,7 +17,8 @@ public class RelationController {
 
     @Transactional()
     @GetMapping("main")
-    public String insert()
+    public String insert() // 서비스 리포지토리 만들어서 데이터가 테이블에 넘어가게끔
+                            // dto 도 만들기
     {
         Academy academy1 = new Academy("메가스터디컴퓨터학원");
         Academy academy2 = new Academy("서면컴퓨터학원");
