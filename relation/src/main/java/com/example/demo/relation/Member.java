@@ -3,10 +3,11 @@ package com.example.demo.relation;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 
-@Getter
+@Getter @Setter
 @NoArgsConstructor
 @Entity
 public class Member {
@@ -15,7 +16,6 @@ public class Member {
     private Long id;
     @Column(name = "member_name")
     private String memberName;
-
     @JoinColumn
     @ManyToOne
     private Academy academy;

@@ -1,36 +1,23 @@
 package com.example.demo.relation;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 
-@Transactional(readOnly = true)
 @Controller
 public class RelationController {
 
-    @PersistenceContext
-    private EntityManager em;
+    @Autowired
+    private RelationService relationService;
 
-    @Transactional()
     @GetMapping("main")
-    public String insert() // 서비스 리포지토리 만들어서 데이터가 테이블에 넘어가게끔
-                            // dto 도 만들기
+    public String insert(Member member, Academy academy)
     {
-        Academy academy1 = new Academy("메가스터디컴퓨터학원");
-        Academy academy2 = new Academy("서면컴퓨터학원");
-        Academy academy3 = new Academy("부산컴퓨터학원");
-        Member member = new Member("홍길동", academy2);
-        academy3.addMember(member);
-
-        em.persist(member);
-        em.persist(academy1);
-        em.persist(academy2);
-        em.persist(academy3);
+        relationService.insertAcademy(academy, member);
 
         return "redirect:/";
     }
+
 }
