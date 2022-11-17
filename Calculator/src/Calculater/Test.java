@@ -5,6 +5,6 @@ public class Test {
         Calculator c1 = new Calculator();
 
         c1.input();
-        c1.output();
+        c1.output();1
     }
 }

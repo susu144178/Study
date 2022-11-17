@@ -8,7 +8,6 @@ import lombok.Setter;
 @Getter @Setter
 @NoArgsConstructor
 public class ProductDto {
-
     private String title;
 
     private String content;
@@ -17,4 +16,11 @@ public class ProductDto {
 
     private int price;
 
+    public ProductDto(String title, String content, int count, int price)
+    {
+        this.title = title;
+        this.content = content;
+        this.count = count;
+        this.price = price;
+    }
 }

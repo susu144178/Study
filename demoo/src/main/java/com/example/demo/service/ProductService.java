@@ -1,6 +1,5 @@
 package com.example.demo.service;
 
-
 import com.example.demo.domain.ImageObject;
 import com.example.demo.dto.ProductDto;
 import com.example.demo.repository.ProductRepository;
@@ -31,12 +30,17 @@ public class ProductService {
         File saved = new File(filePath, fileName);
         file.transferTo(saved);
 
+<<<<<<< Updated upstream
         ImageObject product = new ImageObject(
                 dto.getTitle(),
                 dto.getContent(),
                 dto.getCount(),
                 dto.getPrice(),
                 fileName, filePath);
+=======
+
+        //ImageObject product = new ImageObject(filePath, fileName);
+>>>>>>> Stashed changes
 
         //productRepository.save(product);
     }

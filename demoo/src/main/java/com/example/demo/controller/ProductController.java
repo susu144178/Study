@@ -24,17 +24,9 @@ public class ProductController {
     }
 
     @PostMapping("addProduct")
-    public String addImage(MultipartFile file, ProductDto dto) throws Exception
+    public String addImage(MultipartFile file) throws Exception
     {
-        productService.save(file, dto);
+        productService.save(file);
         return "redirect:/";
     }
-
-
-
-
-
-
-
-
 }
