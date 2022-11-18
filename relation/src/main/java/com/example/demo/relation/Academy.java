@@ -8,7 +8,7 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Getter @Setter
+@Getter
 @NoArgsConstructor
 @Entity
 public class Academy {
