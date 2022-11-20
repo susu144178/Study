@@ -13,14 +13,11 @@ public class RelationRepository {
     private EntityManager em;
 
 
+    public void insertMember(Member member1) { em.persist(member1); }
+
     public void insertAcademy(Academy academy1, Academy academy2)
     {
         em.persist(academy1);
         em.persist(academy2);
-    }
-
-    public void insertMember(Member member1)
-    {
-        em.persist(member1);
     }
 }

@@ -13,18 +13,13 @@ public class RelationService {
     private RelationRepository relationRepository;
 
 
-    public void insertAcademy(Academy academy, Member member)
-    {
-        Academy academy1 = new Academy("메가스터디");
-        Academy academy2 = new Academy("서면학원");
-        Member member1 = new Member("홍길동", academy1);
-
-        relationRepository.insertAcademy(academy1, academy2);
+    public void insertMember(Member member1) {
         relationRepository.insertMember(member1);
     }
 
-
-
-
+    public void insertAcademy(Academy academy1, Academy academy2)
+    {
+        relationRepository.insertAcademy(academy1, academy2);
+    }
 
 }
