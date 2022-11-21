@@ -1,20 +1,20 @@
 package com.example.demo.relation.domain.view.member.dto;
 
 
-import com.example.demo.relation.domain.academy.Academy;
 import lombok.Data;
-import lombok.NoArgsConstructor;
+
+import javax.validation.constraints.NotEmpty;
 
 @Data
-@NoArgsConstructor
 public class MemberDto {
 
+    @NotEmpty // 비어있는 상태로 받을 수 없다.
+    private String loginId;
+
+    @NotEmpty
+    private String password;
+
+    @NotEmpty
     private String memberName;
-    private Academy academy;
 
-
-    public MemberDto(String memberName, Academy academy) {
-        this.memberName = memberName;
-        this.academy = academy;
-    }
 }

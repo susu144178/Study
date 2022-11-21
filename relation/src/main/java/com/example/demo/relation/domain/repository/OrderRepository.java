@@ -14,7 +14,6 @@ public class OrderRepository {
     @PersistenceContext
     private EntityManager em;
 
-
     public void insert(Member member) { em.persist(member); }
 
     /*

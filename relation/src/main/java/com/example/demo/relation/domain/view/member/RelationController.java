@@ -7,10 +7,9 @@ import com.example.demo.relation.domain.service.OrderService;
 import com.example.demo.relation.domain.view.member.dto.MemberDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @RequestMapping("/members")
 @RequiredArgsConstructor // final 을 찾아서 생성해준다.
@@ -25,9 +24,9 @@ public class RelationController {
     }
 
     @PostMapping("/new")
-    public String save(@ModelAttribute("form") MemberDto dto) {
+    public String save(@Valid @ModelAttribute("form") MemberDto dto) {
         orderService.insert(
-                new Member(dto.getMemberName()) );
+                new Member( dto.getMemberName()) );
         return "redirect:/";
     }
 
