@@ -1,9 +1,9 @@
-package com.example.demo.relation;
+package com.example.demo.relation.domain.member;
 
 
+import com.example.demo.relation.domain.academy.Academy;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import javax.persistence.*;
 
@@ -16,12 +16,12 @@ public class Member {
     private Long id;
     @Column(name = "member_name")
     private String memberName;
+
     @JoinColumn
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private Academy academy;
 
-    public Member(String memberName, Academy academy) {
+    public Member(String memberName) {
         this.memberName = memberName;
-        this.academy = academy;
     }
 }

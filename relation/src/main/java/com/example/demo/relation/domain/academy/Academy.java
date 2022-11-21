@@ -1,8 +1,8 @@
-package com.example.demo.relation;
+package com.example.demo.relation.domain.academy;
 
+import com.example.demo.relation.domain.member.Member;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -19,6 +19,7 @@ public class Academy {
     @Column(name = "academy_name")
     private String academyName;
 
+    /*
     @OneToMany(mappedBy = "academy")
     private List<Member> members = new ArrayList<>();
 
@@ -26,6 +27,8 @@ public class Academy {
     {
         members.add(member);
     }
+
+     */
 
     public Academy(String academyName) {
         this.academyName = academyName;
