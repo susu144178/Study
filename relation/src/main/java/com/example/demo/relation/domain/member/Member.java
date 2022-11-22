@@ -17,11 +17,12 @@ public class Member {
     @Column(name = "member_name")
     private String memberName;
 
-    @JoinColumn
+    @JoinColumn(name = "academy_id")
     @ManyToOne(cascade = CascadeType.PERSIST)
     private Academy academy;
 
-    public Member(String memberName) {
+    public Member(String memberName, Academy academy) {
         this.memberName = memberName;
+        this.academy = academy;
     }
 }
