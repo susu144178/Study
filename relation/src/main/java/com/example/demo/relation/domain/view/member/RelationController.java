@@ -38,20 +38,19 @@ public class RelationController {
 
         // List<Academy> all 아무것도 없음.
         for (Academy element : all) {
-            if (element.getAcademyName().equals(dto.getAcademyName())) {
-                Academy academy = new Academy(dto.getAcademyName());
+            if(element.getAcademyName().equals(dto.getAcademyName())) {
+                Academy academy = academyRepository.findById(element.getId());
                 memberService.insert(
-                        new Member(dto.getMemberName(), academy));
+                        new Member( dto.getMemberName(), academy));
             }
-
             else
             {
                 Academy academy = new Academy(dto.getAcademyName());
                 memberService.insert(
-                        new Member(dto.getMemberName(), academy));
+                        new Member( dto.getMemberName(), academy));
             }
-            return "redirect:/";
         }
+            return "redirect:/";
     }
 
 }
