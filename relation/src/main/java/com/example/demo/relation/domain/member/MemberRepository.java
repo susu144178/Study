@@ -24,10 +24,4 @@ public class MemberRepository {
                 .setParameter("name", academyName)
                 .getResultList();
     }
-
-    public List<Member> finById(String loginId) {
-        return em.createQuery("select m from Member m where m.loginId = :id", Member.class)
-                .setParameter("id", loginId)
-                .getResultList();
-    }
 }

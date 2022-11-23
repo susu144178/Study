@@ -31,60 +31,58 @@ public class RelationController {
     @PostMapping("/new")
     public String save(@Valid @ModelAttribute("form") MemberDto dto) {
 
-        //Academy academy = new Academy(dto.getAcademyName());
+        List<Member> members = memberService.findByName(dto.getAcademyName());
 
-        //memberService.insert(new Member( dto.getLoginId(), dto.getMemberName(), dto.getPassword(), academy));
+        if(members.isEmpty()){
 
-       // List<Member> members = memberService.findByName(dto.getAcademyName());
-
-        List<Member> membersId = memberService.fingById(dto.getLoginId());
-
-        if(membersId.isEmpty())
-        {
             Academy academy = new Academy(dto.getAcademyName());
 
-            memberService.insert(new Member( dto.getLoginId(), dto.getMemberName(), dto.getPassword(), academy));
+            memberService.insert(new Member(
+                    dto.getLoginId(), dto.getMemberName(), dto.getPassword(), academy));
         }
         else {
+            for (Member member : members) {
+                if(!member.getMemberName().equals(dto.getMemberName())) {
 
-            for (Member member : membersId) {
-                if (member.getLoginId().equals(dto.getLoginId())) {
+                    Academy academy = new Academy(dto.getAcademyName());
 
+                    memberService.insert(new Member(
+                            dto.getLoginId(), dto.getMemberName(), dto.getPassword(), academy));
                 }
-                System.out.println(member.getLoginId());
+                System.out.println(member.getMemberName());
             }
         }
 
-        //List<Academy> all = academyRepository.findAll();
+
 
         /*
+        List<Academy> all = academyRepository.findAll();
         if(all.isEmpty())
         {
             Academy academy = new Academy(dto.getAcademyName());
-            memberService.insert(
-                    new Member( dto.getMemberName(), academy));
+            memberService.insert(new Member( dto.getLoginId(), dto.getMemberName(), dto.getPassword(), academy));
         }
         else {
             for (Academy element : all) {
 
                 if (element.getAcademyName().equals(dto.getAcademyName())) {
                     Academy academy = academyRepository.findById(element.getId());
-                    memberService.insert(
-                            new Member(dto.getMemberName(), academy));
+                    memberService.insert(new Member( dto.getLoginId(), dto.getMemberName(), dto.getPassword(), academy));
                 }
             }
         }
 
-        for(int i = 0; i < all.size(); ++i)
-        {
-            if(all.get(i).getAcademyName().equals(dto.getAcademyName()))
-            {
-
-            }
-        }
          */
-            return "redirect:/";
-        }
+
+        return "redirect:/";
+    }
 
     }
+
+
+
+
+
+
+
 

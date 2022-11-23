@@ -1,6 +1,7 @@
 package com.example.demo.relation.domain.service;
 
 
+import com.example.demo.relation.domain.academy.Academy;
 import com.example.demo.relation.domain.member.Member;
 import com.example.demo.relation.domain.member.MemberRepository;
 import com.example.demo.relation.domain.repository.OrderRepository;
@@ -26,10 +27,4 @@ public class MemberService {
 
         return memberRepository.findByName(academyName);
     }
-
-    public List<Member> fingById(String loginId)
-    {
-        return memberRepository.finById(loginId);
-    }
-
 }
