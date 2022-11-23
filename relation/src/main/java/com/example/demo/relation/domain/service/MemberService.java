@@ -8,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
 @Service
@@ -19,4 +21,15 @@ public class MemberService {
     public void insert(Member member) {
         memberRepository.save(member);
     }
+
+    public List<Member> findByName(String academyName) {
+
+        return memberRepository.findByName(academyName);
+    }
+
+    public List<Member> fingById(String loginId)
+    {
+        return memberRepository.finById(loginId);
+    }
+
 }
