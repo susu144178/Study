@@ -23,8 +23,5 @@ public class MemberService {
         memberRepository.save(member);
     }
 
-    public List<Member> findByName(String academyName) {
 
-        return memberRepository.findByName(academyName);
-    }
 }

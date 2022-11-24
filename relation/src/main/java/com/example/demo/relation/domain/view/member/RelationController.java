@@ -31,30 +31,24 @@ public class RelationController {
     @PostMapping("/new")
     public String save(@Valid @ModelAttribute("form") MemberDto dto) {
 
-        List<Member> members = memberService.findByName(dto.getAcademyName());
+        List<Academy> academies = academyRepository.findByName(dto.getAcademyName());
 
-        if(members.isEmpty()){
+        Academy academy = null;
 
-            Academy academy = new Academy(dto.getAcademyName());
+            if(!academies.isEmpty())
+                academy = academies.get(0);
 
-            memberService.insert(new Member(
-                    dto.getLoginId(), dto.getMemberName(), dto.getPassword(), academy));
-        }
-        else {
-            for (Member member : members) {
-                if(!member.getMemberName().equals(dto.getMemberName())) {
-
-                    Academy academy = new Academy(dto.getAcademyName());
-
-                    memberService.insert(new Member(
-                            dto.getLoginId(), dto.getMemberName(), dto.getPassword(), academy));
-                }
-                System.out.println(member.getMemberName());
-            }
-        }
+            else
+                 academy = new Academy(dto.getAcademyName());
 
 
-
+            memberService.insert(
+                new Member(
+                        dto.getLoginId(),
+                        dto.getMemberName(),
+                        dto.getPassword(),
+                        academy ) );
+            
         /*
         List<Academy> all = academyRepository.findAll();
         if(all.isEmpty())

@@ -21,5 +21,11 @@ public class AcademyRepository {
         return em.createQuery("select a from Academy a", Academy.class).getResultList();
     }
 
+    public List<Academy> findByName(String academyName) {
+        return em.createQuery("select a from Academy a where a.academyName = :name", Academy.class)
+                .setParameter("name", academyName)
+                .getResultList();
+    }
+
 
 }
