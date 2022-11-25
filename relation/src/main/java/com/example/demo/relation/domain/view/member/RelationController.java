@@ -48,7 +48,7 @@ public class RelationController {
                         dto.getMemberName(),
                         dto.getPassword(),
                         academy ) );
-            
+
         /*
         List<Academy> all = academyRepository.findAll();
         if(all.isEmpty())
