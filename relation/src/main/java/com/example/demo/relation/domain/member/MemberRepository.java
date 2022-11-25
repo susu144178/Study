@@ -3,7 +3,6 @@ package com.example.demo.relation.domain.member;
 
 import com.example.demo.relation.domain.academy.Academy;
 import org.springframework.stereotype.Repository;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
@@ -19,9 +18,9 @@ public class MemberRepository {
         em.persist(member);
     }
 
-    public List<Academy> findByName(String academyName) {
-        return em.createQuery("select m from Member m join m.academy a where a.academyName = :name", Academy.class)
-                .setParameter("name", academyName)
+    public List<Member> findByLoginId(String loginId) {
+        return em.createQuery("select m from Member m where m.loginId = :loginId", Member.class)
+                .setParameter("loginId", loginId)
                 .getResultList();
     }
 }

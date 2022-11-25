@@ -4,11 +4,11 @@ package com.example.demo.relation.domain.view.member;
 import com.example.demo.relation.domain.academy.Academy;
 import com.example.demo.relation.domain.academy.AcademyRepository;
 import com.example.demo.relation.domain.member.Member;
-import com.example.demo.relation.domain.service.MemberService;
-import com.example.demo.relation.domain.service.OrderService;
+import com.example.demo.relation.domain.service.RelationService;
 import com.example.demo.relation.domain.view.member.dto.MemberDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -19,7 +19,7 @@ import java.util.List;
 @Controller
 public class RelationController {
 
-    private final MemberService memberService;
+    private final RelationService relationService;
 
     private final AcademyRepository academyRepository;
 
@@ -29,20 +29,30 @@ public class RelationController {
     }
 
     @PostMapping("/new")
-    public String save(@Valid @ModelAttribute("form") MemberDto dto) {
+    public String save(@Valid @ModelAttribute("form") MemberDto dto, BindingResult bindingResult) {
+
+        if(bindingResult.hasErrors())
+            return "members/newMemberForm";
 
         List<Academy> academies = academyRepository.findByName(dto.getAcademyName());
 
         Academy academy = null;
 
-            if(!academies.isEmpty())
-                academy = academies.get(0);
+        if(!academies.isEmpty())
+            academy = academies.get(0);
 
-            else
-                 academy = new Academy(dto.getAcademyName());
+        else
+            academy = new Academy(dto.getAcademyName());
 
 
-            memberService.insert(
+        List<Member> members = relationService.findByLoginId(dto.getLoginId());
+
+        if(!members.isEmpty()) {
+            System.out.println("Error Message");
+            return "members/newMemberForm";
+        }
+        else
+            relationService.insert(
                 new Member(
                         dto.getLoginId(),
                         dto.getMemberName(),
