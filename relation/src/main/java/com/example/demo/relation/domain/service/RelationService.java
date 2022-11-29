@@ -21,8 +21,8 @@ public class RelationService {
         memberRepository.save(member);
     }
 
-    public List<Member> findByLoginId(String loginId) {
-        return memberRepository.findByLoginId(loginId);
+    public List<Member> findById(String loginId) {
+        return memberRepository.findById(loginId);
     }
 
 

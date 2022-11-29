@@ -45,7 +45,7 @@ public class RelationController {
             academy = new Academy(dto.getAcademyName());
 
 
-        List<Member> members = relationService.findByLoginId(dto.getLoginId());
+        List<Member> members = relationService.findById(dto.getLoginId());
 
         if(!members.isEmpty()) {
             System.out.println("Error Message");

@@ -8,19 +8,22 @@ import javax.validation.constraints.NotEmpty;
 @Data
 public class MemberDto {
 
-    @NotEmpty // 비어있는 상태로 받을 수 없다.
+    @NotEmpty(message = "필수 항목 입니다.") // 비어있는 상태로 받을 수 없다.
     private String loginId;
 
-    @NotEmpty
+    @NotEmpty(message = "필수 항목 입니다.")
+    private String userEmail;
+
+    @NotEmpty(message = "필수 항목 입니다.")
     private String password;
 
-    @NotEmpty
+    @NotEmpty(message = "필수 항목 입니다.")
     private String passwordConfirm;
 
-    @NotEmpty
+    @NotEmpty(message = "필수 항목 입니다.")
     private String memberName;
 
-    @NotEmpty
+    @NotEmpty(message = "필수 항목 입니다.")
     private String academyName;
 
 }
