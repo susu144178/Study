@@ -17,7 +17,7 @@ import java.util.List;
 @RequestMapping("/members")
 @RequiredArgsConstructor // final 을 찾아서 생성해준다.
 @Controller
-public class RelationController {
+public class MemberController {
 
     private final RelationService relationService;
 
