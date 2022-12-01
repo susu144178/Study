@@ -25,6 +25,11 @@
         <!-- 로고 -->
         <img class="logo" src="/images/sign_up.png">
 
+        <div th:if="${#fields.hasGlobalErrors()}">
+            <p class="field-error" th:each="err : ${#fields.globalErrors()}"
+               th:text="${err}">전체 오류 메세지</p>
+        </div>
+
         <!-- 로그인 ID -->
         <div class="field">
             <label for="loginId">로그인 ID</label>

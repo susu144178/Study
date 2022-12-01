@@ -16,10 +16,10 @@ public class LoginService {
 
     private final MemberRepository memberRepository;
 
-    public List<Member> login(String loginId, String password)
+    public List<Member> login(String loginId)//, String password)
     {
-        return memberRepository.findByLoginId(loginId)
-                .stream().filter( m -> m.getPassword().equals(password))
-                .collect(Collectors.toList());
+        return memberRepository.findByLoginId(loginId);
+                //.stream().filter( m -> m.getPassword().equals(password))
+                //.collect(Collectors.toList());
     }
 }
