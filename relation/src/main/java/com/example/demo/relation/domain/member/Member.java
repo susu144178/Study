@@ -21,6 +21,9 @@ public class Member {
     @Column(name = "member_name")
     private String memberName;
 
+    @Column(name = "user_email")
+    private String userEmail;
+
     @Column(name = "password")
     private String password;
 
@@ -28,9 +31,10 @@ public class Member {
     @ManyToOne(cascade = CascadeType.PERSIST)
     private Academy academy;
 
-    public Member(String loginId, String memberName, String password, Academy academy) {
+    public Member(String loginId, String memberName, String userEmail,  String password, Academy academy) {
         this.loginId = loginId;
         this.memberName = memberName;
+        this.userEmail = userEmail;
         this.password = password;
         this.academy = academy;
     }

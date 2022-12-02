@@ -1,6 +1,7 @@
 package com.example.demo.relation.domain.service;
 
 
+import com.example.demo.relation.domain.academy.Academy;
 import com.example.demo.relation.domain.member.Member;
 import com.example.demo.relation.domain.member.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -23,6 +24,10 @@ public class RelationService {
 
     public List<Member> findById(String loginId) {
         return memberRepository.findById(loginId);
+    }
+
+    public List<Academy> findByAcademyName(String academyName) {
+        return memberRepository.findByAcademyName(academyName);
     }
 
 

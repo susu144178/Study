@@ -34,6 +34,10 @@ public class MemberController {
         if(bindingResult.hasErrors())
             return "members/newMemberForm";
 
+        List<Academy> byAcademyName = relationService.findByAcademyName(dto.getAcademyName());
+        System.out.println(byAcademyName);
+
+        /*
         List<Academy> academies = academyRepository.findByName(dto.getAcademyName());
 
         Academy academy = null;
@@ -58,23 +62,6 @@ public class MemberController {
                         dto.getMemberName(),
                         dto.getPassword(),
                         academy ) );
-
-        /*
-        List<Academy> all = academyRepository.findAll();
-        if(all.isEmpty())
-        {
-            Academy academy = new Academy(dto.getAcademyName());
-            memberService.insert(new Member( dto.getLoginId(), dto.getMemberName(), dto.getPassword(), academy));
-        }
-        else {
-            for (Academy element : all) {
-
-                if (element.getAcademyName().equals(dto.getAcademyName())) {
-                    Academy academy = academyRepository.findById(element.getId());
-                    memberService.insert(new Member( dto.getLoginId(), dto.getMemberName(), dto.getPassword(), academy));
-                }
-            }
-        }
 
          */
 

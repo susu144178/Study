@@ -35,7 +35,7 @@ public class LoginController {
 
         if (members.size() == 0)
         {
-            bindingResult.reject("loginFail", "ID와 비밀번호를 다시 확인하세요.");
+            bindingResult.reject("loginFail", "존재하지 않는 사용자 입니다.");
             return "login/loginForm";
         }
         else
@@ -48,7 +48,7 @@ public class LoginController {
                 }
                 else
                 {
-                    bindingResult.reject("loginFail", "ID와 비밀번호를 다시 확인하세요.");
+                    bindingResult.reject("loginFail", "비밀번호를 다시 확인하세요.");
                     return "login/loginForm";
                 }
             }
