@@ -35,30 +35,21 @@ public class MemberController {
             return "members/newMemberForm";
 
         List<Academy> byAcademyName = relationService.findByAcademyName(dto.getAcademyName());
+
+        for (Academy element : byAcademyName)
+            if(element.getAcademyName().equals(dto.getAcademyName()))
+            {
+                Academy academy = academyRepository.findById(element.getId());
+                relationService.insert(new Member(dto.getLoginId(), dto.getMemberName(), dto.getUserEmail(), dto.getPassword(), academy));
+            }
+            else
+            {
+                Academy academy = new Academy(dto.getAcademyName());
+                relationService.insert(new Member(dto.getLoginId(), dto.getMemberName(), dto.getUserEmail(), dto.getPassword(), academy));
+            }
+
         System.out.println(byAcademyName);
-
-        Academy academy = null;
-
-        if(!byAcademyName.isEmpty())
-            academy = byAcademyName.get(0);
-        else
-            academy = new Academy(dto.getAcademyName());
-
-        List<Member> members = relationService.findById(dto.getLoginId());
-
-        if (!members.isEmpty())
-        {
-            return "members/newMemberForm";
-        }
-        else
-            relationService.insert(
-                    new Member(
-                            dto.getLoginId(),
-                            dto.getMemberName(),
-                            dto.getUserEmail(),
-                            dto.getPassword(),
-                            academy )
-            );
+        return "redirect:/";
 
 
 
@@ -90,7 +81,6 @@ public class MemberController {
 
          */
 
-        return "redirect:/";
     }
 
     }
