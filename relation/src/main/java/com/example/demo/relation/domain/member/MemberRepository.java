@@ -31,7 +31,7 @@ public class MemberRepository {
     }
 
     public List<Academy> findByAcademyName(String academyName) {
-        return em.createQuery("select m from Member m join m.Academy a where a.academyName= :academyName", Academy.class)
+        return em.createQuery("select m from Member m join m.academy a where a.academyName= :academyName", Academy.class)
                 .setParameter("academyName", academyName)
                 .getResultList();
     }

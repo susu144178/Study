@@ -1,8 +1,10 @@
 package com.example.demo.relation.domain.view.login;
 
 
+import com.example.demo.relation.domain.academy.Academy;
 import com.example.demo.relation.domain.login.LoginService;
 import com.example.demo.relation.domain.member.Member;
+import com.example.demo.relation.domain.service.RelationService;
 import com.example.demo.relation.domain.view.login.dto.LoginDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -52,6 +54,7 @@ public class LoginController {
                     return "login/loginForm";
                 }
             }
+
             return "redirect:/";
         }
     }

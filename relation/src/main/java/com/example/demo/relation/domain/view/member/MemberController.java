@@ -37,6 +37,31 @@ public class MemberController {
         List<Academy> byAcademyName = relationService.findByAcademyName(dto.getAcademyName());
         System.out.println(byAcademyName);
 
+        Academy academy = null;
+
+        if(!byAcademyName.isEmpty())
+            academy = byAcademyName.get(0);
+        else
+            academy = new Academy(dto.getAcademyName());
+
+        List<Member> members = relationService.findById(dto.getLoginId());
+
+        if (!members.isEmpty())
+        {
+            return "members/newMemberForm";
+        }
+        else
+            relationService.insert(
+                    new Member(
+                            dto.getLoginId(),
+                            dto.getMemberName(),
+                            dto.getUserEmail(),
+                            dto.getPassword(),
+                            academy )
+            );
+
+
+
         /*
         List<Academy> academies = academyRepository.findByName(dto.getAcademyName());
 
