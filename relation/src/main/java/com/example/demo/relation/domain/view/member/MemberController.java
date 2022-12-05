@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.sound.midi.MetaMessage;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -35,10 +36,10 @@ public class MemberController {
         if(bindingResult.hasErrors())
             return "members/newMemberForm";
 
+
         /*
         List<Academy> byAcademyName = relationService.findByAcademyName(dto.getAcademyName());
         System.out.println(byAcademyName);
-
         for (Academy element : byAcademyName)
             if(element.getAcademyName().equals(dto.getAcademyName()))
             {
@@ -50,10 +51,7 @@ public class MemberController {
                 Academy academy = new Academy(dto.getAcademyName());
                 relationService.insert(new Member(dto.getLoginId(), dto.getMemberName(), dto.getUserEmail(), dto.getPassword(), academy));
             }
-
          */
-
-
         List<Academy> academies = academyRepository.findByName(dto.getAcademyName());
 
         Academy academy = null;
@@ -64,10 +62,7 @@ public class MemberController {
         else
             academy = new Academy(dto.getAcademyName());
 
-
         List<Member> members = relationService.findById(dto.getLoginId());
-
-        List<Member> address = relationService.findByAddress()
 
 
         if(!members.isEmpty()) {
@@ -75,13 +70,16 @@ public class MemberController {
             return "members/newMemberForm";
         }
         else
+        {
             relationService.insert(
-                new Member(
-                        dto.getLoginId(),
-                        dto.getMemberName(),
-                        dto.getPassword(),
-                        academy, ) );
-    return "redirect:/";
+                    new Member(
+                            dto.getLoginId(),
+                            dto.getMemberName(),
+                            dto.getUserEmail(),
+                            dto.getPassword(),
+                            academy ) );
+        }
+        return "redirect:/";
     }
 
 }

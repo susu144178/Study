@@ -41,14 +41,16 @@ public class Member {
     @ManyToOne(cascade = CascadeType.PERSIST)
     private Academy academy;
 
-    public Member(String loginId, String memberName, String userEmail,  String password, Academy academy, Address address) {
+    public Member(String loginId, String memberName, String userEmail, String password, Academy academy) {
         this.loginId = loginId;
         this.memberName = memberName;
         this.userEmail = userEmail;
         this.password = password;
         this.academy = academy;
-        this.address = address;
 
+        address.setAddress1("city");
+        address.setAddress2("street");
+        address.setZipcode("zip");
     }
 
 }
