@@ -30,5 +30,7 @@ public class RelationService {
         return memberRepository.findByAcademyName(academyName);
     }
 
+    public List<Member> findByAddress(String address){return  memberRepository.findByAddress(address);}
+
 
 }

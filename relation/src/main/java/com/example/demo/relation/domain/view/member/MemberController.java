@@ -3,6 +3,7 @@ package com.example.demo.relation.domain.view.member;
 
 import com.example.demo.relation.domain.academy.Academy;
 import com.example.demo.relation.domain.academy.AcademyRepository;
+import com.example.demo.relation.domain.member.Address;
 import com.example.demo.relation.domain.member.Member;
 import com.example.demo.relation.domain.service.RelationService;
 import com.example.demo.relation.domain.view.member.dto.MemberDto;
@@ -34,7 +35,9 @@ public class MemberController {
         if(bindingResult.hasErrors())
             return "members/newMemberForm";
 
+        /*
         List<Academy> byAcademyName = relationService.findByAcademyName(dto.getAcademyName());
+        System.out.println(byAcademyName);
 
         for (Academy element : byAcademyName)
             if(element.getAcademyName().equals(dto.getAcademyName()))
@@ -48,12 +51,9 @@ public class MemberController {
                 relationService.insert(new Member(dto.getLoginId(), dto.getMemberName(), dto.getUserEmail(), dto.getPassword(), academy));
             }
 
-        System.out.println(byAcademyName);
-        return "redirect:/";
+         */
 
 
-
-        /*
         List<Academy> academies = academyRepository.findByName(dto.getAcademyName());
 
         Academy academy = null;
@@ -67,6 +67,9 @@ public class MemberController {
 
         List<Member> members = relationService.findById(dto.getLoginId());
 
+        List<Member> address = relationService.findByAddress()
+
+
         if(!members.isEmpty()) {
             System.out.println("Error Message");
             return "members/newMemberForm";
@@ -77,13 +80,12 @@ public class MemberController {
                         dto.getLoginId(),
                         dto.getMemberName(),
                         dto.getPassword(),
-                        academy ) );
-
-         */
-
+                        academy, ) );
+    return "redirect:/";
     }
 
-    }
+}
+
 
 
 
