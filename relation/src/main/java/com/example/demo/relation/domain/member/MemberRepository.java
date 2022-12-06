@@ -35,4 +35,9 @@ public class MemberRepository {
                 .getResultList();
     }
 
+    public List<Member> findAddress(String address) {
+        return em.createQuery("select m from Member m where m.address = :address",Member.class)
+                .setParameter("address", address)
+                .getResultList();
+    }
 }

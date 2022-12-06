@@ -63,7 +63,7 @@ public class MemberController {
             academy = new Academy(dto.getAcademyName());
 
         List<Member> members = relationService.findById(dto.getLoginId());
-
+        
 
         if(!members.isEmpty()) {
             System.out.println("Error Message");
@@ -71,13 +71,13 @@ public class MemberController {
         }
         else
         {
-            relationService.insert(
+            relationService.insert (
                     new Member(
                             dto.getLoginId(),
                             dto.getMemberName(),
                             dto.getUserEmail(),
                             dto.getPassword(),
-                            academy ) );
+                            academy) );
         }
         return "redirect:/";
     }

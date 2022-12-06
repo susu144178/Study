@@ -30,6 +30,7 @@ public class Member {
     @Column(name = "password")
     private String password;
 
+    @Embedded
     @AttributeOverrides({
             @AttributeOverride(name = "address1", column = @Column(table = "member_address", name = "address1")),
             @AttributeOverride(name = "address2", column = @Column(table = "member_address", name = "address2")),
@@ -48,9 +49,9 @@ public class Member {
         this.password = password;
         this.academy = academy;
 
-        address.setAddress1("city");
-        address.setAddress2("street");
-        address.setZipcode("zip");
+        address.setAddress1("");
+        address.setAddress2("");
+        address.setZipcode("");
     }
 
 }

@@ -27,4 +27,7 @@ public class MemberDto {
     @NotEmpty(message = "필수 항목 입니다.")
     private String academyName;
 
+    @NotEmpty(message = "필수 항목 입니다.")
+    private String address;
+
 }

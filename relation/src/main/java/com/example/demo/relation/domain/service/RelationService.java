@@ -27,8 +27,11 @@ public class RelationService {
         return memberRepository.findById(loginId);
     }
 
-
     public List<Academy> findByAcademyName(String academyName) {
         return memberRepository.findByAcademyName(academyName);
+    }
+
+    public List<Member> findAddress(String address){
+        return memberRepository.findAddress(address);
     }
 }
