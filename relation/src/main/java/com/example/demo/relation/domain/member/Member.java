@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.awt.*;
 
 @Getter
 @SecondaryTables({
@@ -30,7 +31,6 @@ public class Member {
     @Column(name = "password")
     private String password;
 
-    @Embedded
     @AttributeOverrides({
             @AttributeOverride(name = "address1", column = @Column(table = "member_address", name = "address1")),
             @AttributeOverride(name = "address2", column = @Column(table = "member_address", name = "address2")),
@@ -42,16 +42,14 @@ public class Member {
     @ManyToOne(cascade = CascadeType.PERSIST)
     private Academy academy;
 
-    public Member(String loginId, String memberName, String userEmail, String password, Academy academy) {
+    public Member(String loginId, String memberName, String userEmail, String password, Academy academy, Address address) {
         this.loginId = loginId;
         this.memberName = memberName;
         this.userEmail = userEmail;
         this.password = password;
         this.academy = academy;
+        this.address = address;
 
-        address.setAddress1("");
-        address.setAddress2("");
-        address.setZipcode("");
     }
 
 }

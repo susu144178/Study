@@ -20,6 +20,7 @@ public class RelationService {
 
     @Transactional
     public void insert(Member member) {
+
         memberRepository.save(member);
     }
 
@@ -31,7 +32,4 @@ public class RelationService {
         return memberRepository.findByAcademyName(academyName);
     }
 
-    public List<Member> findAddress(String address){
-        return memberRepository.findAddress(address);
-    }
 }

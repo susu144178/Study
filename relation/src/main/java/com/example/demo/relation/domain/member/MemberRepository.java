@@ -17,6 +17,7 @@ public class MemberRepository {
         em.persist(member);
     }
 
+
     public List<Member> findById(String loginId) {
         return em.createQuery("select m from Member m where m.loginId = :loginId", Member.class)
                 .setParameter("loginId", loginId)
@@ -35,9 +36,4 @@ public class MemberRepository {
                 .getResultList();
     }
 
-    public List<Member> findAddress(String address) {
-        return em.createQuery("select m from Member m where m.address = :address",Member.class)
-                .setParameter("address", address)
-                .getResultList();
-    }
 }
