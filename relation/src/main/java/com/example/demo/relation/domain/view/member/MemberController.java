@@ -48,25 +48,26 @@ public class MemberController {
 
         List<Member> members = relationService.findById(dto.getLoginId());
 
-        Address addr = new Address();
-
-        addr.setAddress1("city");
-        addr.setAddress2("street");
-        addr.setZipcode("zipcode");
-
         if(!members.isEmpty()) {
             System.out.println("Error Message");
             return "members/newMemberForm";
         }
         else
         {
+            Address address = new Address(
+                    dto.getCountry(),
+                    dto.getCity(),
+                    dto.getAddress1(),
+                    dto.getAddress2(),
+                    dto.getZipcode() );
+
             relationService.insert (
                     new Member(
                             dto.getLoginId(),
                             dto.getMemberName(),
                             dto.getUserEmail(),
                             dto.getPassword(),
-                            academy, addr) );
+                            academy, address) );
         }
         return "redirect:/";
     }

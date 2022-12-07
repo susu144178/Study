@@ -32,9 +32,11 @@ public class Member {
     private String password;
 
     @AttributeOverrides({
+            @AttributeOverride(name = "country", column = @Column(table = "member_address", name = "country")),
+            @AttributeOverride(name = "city", column = @Column(table = "member_address", name = "city")),
             @AttributeOverride(name = "address1", column = @Column(table = "member_address", name = "address1")),
             @AttributeOverride(name = "address2", column = @Column(table = "member_address", name = "address2")),
-            @AttributeOverride(name = "zipcode", column = @Column(table = "member_address", name = "zipcode") )
+            @AttributeOverride(name = "zipcode", column = @Column(table = "member_address", name = "zipcode")),
     })
     private Address address;
 

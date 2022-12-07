@@ -3,6 +3,7 @@ package com.example.demo.relation.domain.view.member.dto;
 
 import lombok.Data;
 
+import javax.persistence.Column;
 import javax.validation.constraints.NotEmpty;
 
 @Data
@@ -25,5 +26,20 @@ public class MemberDto {
 
     @NotEmpty(message = "필수 항목 입니다.")
     private String academyName;
+
+    @NotEmpty(message = "필수 항목 입니다.")
+    private String country;
+
+    @NotEmpty(message = "필수 항목 입니다.")
+    private String city;
+
+    @NotEmpty(message = "필수 항목 입니다.")
+    private String address1;
+
+    @NotEmpty(message = "필수 항목 입니다.")
+    private String address2;
+
+    @NotEmpty(message = "필수 항목 입니다.")
+    private String zipcode;
 
 }
